@@ -14,39 +14,114 @@
                 <img src="images/logo.png" alt="NVAS 로고">
                 <span>NVAS</span>
             </a>
+            <nav>
+                <a href="http://168.131.49.129:8085/" class="nav-btn">Launch NVAS</a>
+            </nav>
         </div>
     </header>
     <main>
-        <h1 class="main-title">NVAS</h1>
-        <h2 class="sub-title">Nuclear Vulnerability Assessment System</h2>
-        <p class="description">
-            원자력 발전소 필수디지털자산 보안-안전 상호영향 평가시스템
-        </p>
-        <a href="http://168.131.49.129:8083/" class="home-btn">Home</a>
-
-        <div class="card-container">
-            <div class="info-card">
-                <div class="card-top">원자력 특화 취약점 재평가</div>
-                <div class="card-img-area">
-                    <img src="images/card1.png" alt="원자력 특화 취약점 재평가 사진">
+        <div class="scroll-container">
+            <section class="fullscreen-section hero-section">
+                <div class="hero-content">
+                    <h1 class="main-title">NVAS</h1>
+                    <h2 class="sub-title">Nuclear Vulnerability Assessment System</h2>
+                    <p class="description">원자력발전소 필수디지털자산 보안-안전 상호영향 평가 시스템</p>
+                    <a href="#section1" class="scroll-down-btn">Explore Features ↓</a>
                 </div>
-                <div class="card-bottom"></div>
-            </div>
-            <div class="info-card">
-                <div class="card-top">보안조치 식별</div>
-                <div class="card-img-area">
-                    <img src="images/card2.png" alt="보안조치 식별 사진">
+            </section>
+            <section id="section1" class="fullscreen-section">
+                <div class="presentation-card">
+                    <div class="text-content">
+                        <span class="step-badge">Step 01</span>
+                        <h2 class="section-title">NVAS Dashboard</h2>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/card1.png" alt="NVAS Dashboard">
+                    </div>
                 </div>
-                <div class="card-bottom"></div>
-            </div>
-            <div class="info-card">
-                <div class="card-top">관리자산 가시성 확보</div>
-                <div class="card-img-area">
-                    <img src="images/card3.png" alt="관리자산 가시성 확보 사진">
+            </section>
+            <section class="fullscreen-section">
+                <div class="presentation-card">
+                    <div class="text-content">
+                        <span class="step-badge">Step 02</span>
+                        <h2 class="section-title">ICS Security Advisories</h2>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/card2.png" alt="ICS Security Advisories">
+                    </div>
                 </div>
-                <div class="card-bottom"></div>
-            </div>
+            </section>
+            <section class="fullscreen-section">
+                <div class="presentation-card">
+                    <div class="text-content">
+                        <span class="step-badge">Step 03</span>
+                        <h2 class="section-title">System Information Lookup</h2>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/card3.png" alt="System Information Lookup">
+                    </div>
+                </div>
+            </section>
+            <section class="fullscreen-section">
+                <div class="presentation-card">
+                    <div class="text-content">
+                        <span class="step-badge">Step 04</span>
+                        <h2 class="section-title">Vulnerability Analysis & Reassessment Results</h2>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/card4.png" alt="Vulnerability Analysis & Reassessment Results">
+                    </div>
+                </div>
+            </section>
+            <section class="fullscreen-section">
+                <div class="presentation-card">
+                    <div class="text-content">
+                        <span class="step-badge">Step 05</span>
+                        <h2 class="section-title">Security & Safety Correlation Analysis</h2>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/card5.png" alt="Security & Safety Correlation Analysis">
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
+    <script>
+        const container = document.querySelector('.scroll-container');
+        const sections = document.querySelectorAll('.fullscreen-section');
+        let currentSectionIndex = 0;
+        let isScrolling = false;
+
+        window.addEventListener('wheel', (e) => {
+            e.preventDefault();
+
+            if (isScrolling) return;
+
+            if (e.deltaY > 0) {
+                if (currentSectionIndex < sections.length - 1) {
+                    currentSectionIndex++;
+                    scrollToSection(currentSectionIndex);
+                }
+            } else {
+                if (currentSectionIndex > 0) {
+                    currentSectionIndex--;
+                    scrollToSection(currentSectionIndex);
+                }
+            }
+        }, { passive: false });
+
+        function scrollToSection(index) {
+            isScrolling = true;
+            
+            sections[index].scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            setTimeout(() => {
+                isScrolling = false;
+            }, 500); 
+        }
+    </script>
 </body>
 </html>
